@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="triangle" class="com.shiv.examples.Triangle">        
+        <!-- collaborators and configuration for this bean go here -->
+        
+        <property name="type" value="Equilateral" />
+        <property name="size" value="10" />
+        <property name="pointA" ref="point1" />
+        <property name="pointB" ref="point2" />
+    </bean>
+    
+    <!-- <bean id="triangle2" class="com.shiv.examples.Triangle">
+    	<property name="type" value="Isoceles" />
+    	<property name="size" value="20" />
+    </bean> 
+     -->
+  
+    <!-- <bean id="triangle2" class="com.shiv.examples.Triangle">
+    	<constructor-arg type="java.lang.String" value="Right-angle"/>  or u can use index attribute( index="0" for 1st argument and 1 for 2nd so on)
+    	<constructor-arg type="int" value="30"></constructor-arg>
+    </bean>  -->
+ 	
+ 	<bean id="point1" class="com.shiv.examples.Point">
+ 		<property name="x" value="${pointA.pointX}"></property>
+ 		<property name="y" value="${pointA.pointY}"></property>
+ 	</bean>
+ 	<bean id="point2" class="com.shiv.examples.Point">
+ 		<property name="x" value="-10"></property>
+ 		<property name="y" value="15"></property>
+ 	</bean>
+ 	
+ 	
+ 	
+ 	<bean class="com.shiv.examples.DisplayNameBeanPostProcessor">
+ 	</bean>
+ 	
+ 	<bean class="com.shiv.examples.MyBeanFactoryPostProcessor">
+ 	</bean>
+ 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+ 		<property name="location" value="pointProp.properties"></property>
+ 	</bean>
+
+</beans>
